@@ -1,0 +1,15 @@
+{
+  "name": "invaderz",
+  "version": "0.3.0",
+  "license": "MIT OR Apache-2.0",
+  "files": [
+    "invaderz_bg.wasm",
+    "invaderz.js",
+    "invaderz.d.ts"
+  ],
+  "module": "invaderz.js",
+  "types": "invaderz.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

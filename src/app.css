@@ -1,3 +1,47 @@
 @tailwind base;
+@layer base {
+	h1 {
+		@apply text-2xl;
+	}
+	h2 {
+		@apply text-xl;
+	}
+	h3 {
+		@apply text-lg;
+	}
+	a {
+		@apply text-blue-600 underline;
+	}
+}
 @tailwind components;
 @tailwind utilities;
+
+body {
+	font-family: Nunito, sans-serif;
+}
+/* nunito-regular - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Nunito';
+	font-style: normal;
+	font-weight: 400;
+	src: url('/fonts/nunito-v25-latin-regular.eot'); /* IE9 Compat Modes */
+	src: url('/fonts/nunito-v25-latin-regular.eot?#iefix') format('embedded-opentype'),
+		/* IE6-IE8 */ url('/fonts/nunito-v25-latin-regular.woff2') format('woff2'),
+		/* Super Modern Browsers */ url('/fonts/nunito-v25-latin-regular.woff') format('woff'),
+		/* Modern Browsers */ url('/fonts/nunito-v25-latin-regular.ttf') format('truetype'),
+		/* Safari, Android, iOS */ url('/fonts/nunito-v25-latin-regular.svg#Nunito') format('svg'); /* Legacy iOS */
+}
+/* nunito-800 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Nunito';
+	font-style: normal;
+	font-weight: 800;
+	src: url('/fonts/nunito-v25-latin-800.eot'); /* IE9 Compat Modes */
+	src: url('/fonts/nunito-v25-latin-800.eot?#iefix') format('embedded-opentype'),
+		/* IE6-IE8 */ url('/fonts/nunito-v25-latin-800.woff2') format('woff2'),
+		/* Super Modern Browsers */ url('/fonts/nunito-v25-latin-800.woff') format('woff'),
+		/* Modern Browsers */ url('/fonts/nunito-v25-latin-800.ttf') format('truetype'),
+		/* Safari, Android, iOS */ url('/fonts/nunito-v25-latin-800.svg#Nunito') format('svg'); /* Legacy iOS */
+}

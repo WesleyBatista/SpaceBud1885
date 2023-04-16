@@ -11,3 +11,7 @@ node_modules
 pnpm-lock.yaml
 package-lock.json
 yarn.lock
+inva
+src/invaderz/src
+src/invaderz/target
+src/invaderz/pkg

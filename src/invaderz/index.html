@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Invaderz</title>
+	</head>
+	<body>
+		<canvas class="bevy-instance__canvas" id="bevy" width="598" height="676"></canvas>
+		<script type="module">
+			import init, { start } from './pkg/invaderz.js';
+			init().then(() => {
+				start();
+			});
+		</script>
+	</body>
+</html>

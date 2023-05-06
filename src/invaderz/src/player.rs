@@ -5,6 +5,7 @@ use crate::{
 };
 use bevy::prelude::*;
 use bevy::time::FixedTimestep;
+use bevy::utils::tracing::{info};
 
 pub struct PlayerPlugin;
 
@@ -106,3 +107,4 @@ fn player_keyboard_event_system(
 		}
 	}
 }
+

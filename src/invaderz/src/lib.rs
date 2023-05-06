@@ -11,6 +11,7 @@ use components::{
 use enemy::EnemyPlugin;
 use player::PlayerPlugin;
 use std::collections::HashSet;
+use bevy::utils::tracing::{info};
 
 mod components;
 mod enemy;
@@ -127,6 +128,8 @@ pub fn start() {
 		.add_system(enemy_laser_hit_player_system)
 		.add_system(explosion_to_spawn_system)
 		.add_system(explosion_animation_system)
+		.add_system(player_touch_input_event_reader_event_system)
+		.add_system(player_touches_event_system)
 		.run();
 }
 
@@ -273,6 +276,8 @@ fn enemy_laser_hit_player_system(
 
 				// remove the laser
 				commands.entity(laser_entity).despawn();
+				info!("died");
+
 
 				// spawn the explosionToSpawn
 				commands.spawn(ExplosionToSpawn(player_tf.translation.clone()));
@@ -321,4 +326,54 @@ fn explosion_animation_system(
 			}
 		}
 	}
+}
+
+use bevy::input::touch::TouchPhase;
+
+fn player_touch_input_event_reader_event_system(
+	mut touch_evr: EventReader<TouchInput>,
+	mut query: Query<&mut Velocity, With<Player>>,
+) {
+	// if let Ok(mut velocity) = query.get_single_mut() {
+    for ev in touch_evr.iter() {
+        // in real apps you probably want to store and track touch ids somewhere
+        match ev.phase {
+            TouchPhase::Started => {
+                info!("Touch {} started at: {:?}", ev.id, ev.position);
+            }
+            TouchPhase::Moved => {
+                info!("Touch {} moved to: {:?}", ev.id, ev.position);
+            }
+            TouchPhase::Ended => {
+                info!("Touch {} ended at: {:?}", ev.id, ev.position);
+            }
+            TouchPhase::Cancelled => {
+                info!("Touch {} cancelled at: {:?}", ev.id, ev.position);
+            }
+        }
+    }
+	// }
+}
+
+fn player_touches_event_system(
+	touches: Res<Touches>,
+	mut query: Query<&mut Velocity, With<Player>>,
+) {
+	// if let Ok(mut velocity) = query.get_single_mut() {
+    for finger in touches.iter() {
+        if touches.just_pressed(finger.id()) {
+            info!("A new touch with ID {} just began.", finger.id());
+        }
+        info!(
+            "Finger {} is at position ({},{}), started from ({},{}). delta = ({},{})",
+            finger.id(),
+            finger.position().x,
+            finger.position().y,
+            finger.start_position().x,
+            finger.start_position().y,
+            finger.delta().x,
+						finger.delta().y,
+        );
+    }
+	// }
 }
